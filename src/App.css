@@ -5,3 +5,15 @@
   box-sizing: border-box;
   font-family: 'Fondamento', cursive, Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
+
+a{
+    text-decoration: none;
+    color:inherit;
+}
+
+:root{
+    --primary-bg:rgb(102, 92, 171);
+    --light-theme-btn:#430f58;
+    --dark-theme-btn:#c3195d;
+    --white:white;
+}
