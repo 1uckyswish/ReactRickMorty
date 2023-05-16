@@ -4,7 +4,7 @@ import {useEffect, useState} from 'react'
 import axios from 'axios'
 import CharacterCard from '../../Components/CharacterCard/CharacterCard';
 
-function Hompage() {
+function Homepage() {
   // create state of characters
   const [characters, setCharacters] = useState([]);
 
@@ -13,7 +13,7 @@ function Hompage() {
   //make api call when page loads with useEffect
   useEffect(
     ()=>{
-      console.log("Hompageloaded")
+      console.log("homepage")
       //call api to get characters
       axios.get(`https://rickandmortyapi.com/api/character`)
       .then(res =>{
@@ -39,4 +39,4 @@ function Hompage() {
   )
 }
 
-export default Hompage
+export default Homepage
