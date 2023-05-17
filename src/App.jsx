@@ -2,17 +2,17 @@ import { useState } from 'react'
 import './App.css'
 import Header from './Components/Header/Header'
 import Footer from './Components/Footer/Footer'
-import Homepage from './Pages/Hompage.jsx/Hompage';
+import Homepage from './Pages/Homepage.jsx/Homepage';
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
-   <div>
+  <div>
     <Header />
     <Homepage />
     <Footer />
-   </div>
+  </div>
   )
 }
 
