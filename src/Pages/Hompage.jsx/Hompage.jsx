@@ -17,7 +17,7 @@ function Homepage() {
       //call api to get characters
       axios.get(`https://rickandmortyapi.com/api/character`)
       .then(res =>{
-        console.log(res.data.results)
+        console.table(res.data.results)
         setCharacters(res.data.results)
       }
 
