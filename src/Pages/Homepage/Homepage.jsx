@@ -3,6 +3,7 @@ import './Homepage.css'
 import {useEffect, useState} from 'react'
 import axios from 'axios'
 import CharacterCard from '../../Components/CharacterCard/CharacterCard';
+import Search from '../../Components/Search/Search';
 
 function Homepage() {
   // create state of characters
@@ -28,6 +29,7 @@ function Homepage() {
 
   return (
     <div className='home-container'>
+      <Search setCharacters={setCharacters}/>
       <h1>Main Characters</h1>
       <div className='characters-container'>
         {
