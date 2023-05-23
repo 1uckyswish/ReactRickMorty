@@ -6,9 +6,10 @@ function CharacterCard({character}) {
     <div className='character-card'>
         <img src={character?.image} />
         <p>{character?.name}</p>
-        <a href='#'>See Details</a>
+        <a href={`/details/${character?.id}`}>See Details</a>
     </div>
   )
 }
+
 
 export default CharacterCard

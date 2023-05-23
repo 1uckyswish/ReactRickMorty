@@ -6,8 +6,9 @@ import Homepage from './Pages/Homepage/Homepage';
 import { BrowserRouter, Route, Routes} from 'react-router-dom';
 import Episodes from './Pages/Episodes/Episodes';
 import About from './Pages/About/About';
+import CharcterDetails from './Pages/CharacterDetails/CharcterDetails';
 function App() {
-
+// when routing use a colon to set a paramter
   return (
   <div>
     <BrowserRouter>
@@ -15,6 +16,7 @@ function App() {
   <Routes>
     <Route path='/' element={<Homepage />}/>
     <Route path='/About' element={<About />}/>
+    <Route path='/details/:characterId' element={<CharcterDetails />}/>
     <Route path='/Episodes' element={<Episodes />}/>
   </Routes>
     <Footer />
