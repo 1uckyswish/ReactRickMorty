@@ -1,11 +1,14 @@
 import React from 'react'
 import './Homepage.css'
-import {useEffect, useState} from 'react'
+import {useEffect, useState, useContext} from 'react'
 import axios from 'axios'
 import CharacterCard from '../../Components/CharacterCard/CharacterCard';
 import Search from '../../Components/Search/Search';
-
+import { ThemeContext } from '../../Contexts/ThemeContext';
 function Homepage() {
+    //change ot global state
+  //NOTE { } NOT []
+  const {darkMode, setDarkMode} = useContext(ThemeContext);
   // create state of characters
   const [characters, setCharacters] = useState([]);
 
@@ -18,7 +21,7 @@ function Homepage() {
       //call api to get characters
       axios.get(`https://rickandmortyapi.com/api/character`)
       .then(res =>{
-        console.table(res.data.results)
+        console.log(res.data.results)
         setCharacters(res.data.results)
       }
 
@@ -28,7 +31,7 @@ function Homepage() {
   )
 
   return (
-    <div className='home-container'>
+    <div className={darkMode?'home-container home-dark': 'home-container'}>
       <Search setCharacters={setCharacters}/>
       <h1>Main Characters</h1>
       <div className='characters-container'>

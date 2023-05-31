@@ -7,11 +7,14 @@ import { BrowserRouter, Route, Routes} from 'react-router-dom';
 import Episodes from './Pages/Episodes/Episodes';
 import About from './Pages/About/About';
 import CharcterDetails from './Pages/CharacterDetails/CharcterDetails';
+import ThemeContextProvider from './Contexts/ThemeContext';
+
 function App() {
 // when routing use a colon to set a paramter
   return (
   <div>
     <BrowserRouter>
+    <ThemeContextProvider>
     <Header />
   <Routes>
     <Route path='/' element={<Homepage />}/>
@@ -20,6 +23,7 @@ function App() {
     <Route path='/Episodes' element={<Episodes />}/>
   </Routes>
     <Footer />
+    </ThemeContextProvider>
     </BrowserRouter>
   </div>
   )

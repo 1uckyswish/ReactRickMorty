@@ -13,3 +13,7 @@
     flex-wrap: wrap;
     justify-content: center;
 }
+.home-dark{
+    background-color: black;
+    color:white;
+ }

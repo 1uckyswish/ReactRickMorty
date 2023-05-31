@@ -1,8 +1,8 @@
-import React, { useEffect, useState} from 'react'
+import React, { useEffect, useState, useContext} from 'react'
 import './Episodes.css'
 import axios from 'axios'
 import CharacterCard from '../../Components/CharacterCard/CharacterCard';
-import { event } from 'jquery';
+import { ThemeContext } from '../../Contexts/ThemeContext';
 
 function Episodes() {
   // when page loads create a dropdown UI
@@ -11,6 +11,8 @@ function Episodes() {
   const [selectedOption, setSelectedOption] = useState(1)
   const [selectedEpisode, setSelectedEpisode] = useState([])
   const [characterList, setCharacterList] = useState([]);
+
+  const {darkMode} = useContext(ThemeContext);
 
   useEffect(
     ()=>{
@@ -23,7 +25,7 @@ function Episodes() {
         }
         setOptions(newOptions);
       })
-      .catch(err =>  err)
+      .catch(err =>  console(err))
     }, []
   )
 
@@ -68,7 +70,7 @@ function Episodes() {
   }
 
   return (
-    <div className='episodes-container'>
+    <div className={darkMode?'episodes-container episodes-dark':'episodes-container'}>
       <div>
         <label>Select an Episode</label>
         <select id='select-episode' onChange={handleSelectChange}>
