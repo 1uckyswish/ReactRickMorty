@@ -13,8 +13,11 @@ function Favorites() {
         <h1>My Favorite Characters</h1>
         <div className='favorite-characters'>
         {
-        favorites.map((item)=><CharacterCard key={item.id} character={item}/>
-        )
+          //* if the length of the array is none then display an alert 
+        favorites.length > 0 ?
+        favorites.map((item)=><CharacterCard key={item.id} character={item}/>)
+        :
+        <p>No Favorites Selected Yet</p>
         }
         </div>
     </div>

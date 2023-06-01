@@ -12,27 +12,30 @@ export default function FavoritesContextProvider(props){
 
 console.log("new", favorites)
 
+    //* when the page loads we need to retrive the local storage data
+    useEffect(
+        ()=>{
+        //* check local storage to set state
+        //* whatever we called the varibale to set it in local storage access that string 
+        const storedFavs = localStorage.getItem('favoritesList')
+        console.log('value is ',storedFavs)
+        //* if data is inside the variable in local storage turn into a object
+        if(storedFavs){
+            //* only set if there is something in local storage
+            setFavorites(JSON.parse(storedFavs))
+        }
 
-    // useEffect(
-    //     ()=>{
-    //     //* check local storage to set state
-    //     const storedDarkMode = localStorage.getItem('darkMode')
-    //     console.log('value is ',storedDarkMode)
-    //     if(storedDarkMode){
-    //         //* only set if there is something in local storage
-    //         setDarkMode(JSON.parse(storedDarkMode))
-    //     }
-
-    //     }, []
-    // )
-    // //run when page loads
-    // useEffect(
-    //     ()=>{
-    //         console.log('darkMode is', darkMode)
-    //         //save current state to localStorage
-    //         localStorage.setItem('darkMode', JSON.stringify(darkMode))
-    //     },[darkMode]// runs one time
-    // )
+        }, []
+    )
+    //run when page loads
+    useEffect(
+        ()=>{
+            //* save current state to localStorage
+            //* append a name to hold object. Name it then convert the object into a string value
+            //* local storage reads everyhting in string form NOT OBJECTS
+            localStorage.setItem('favoritesList', JSON.stringify(favorites))
+        }, [favorites]// runs one time //*anytime favorites changes the add to local storage
+    )
 
     //* a function to add a character to favorite's
     const addCharacter = (charToAdd)=>{
@@ -42,11 +45,18 @@ console.log("new", favorites)
         console.log(newFavorites)
         //* call state to append the new value to the function
         setFavorites(newFavorites)
-
     };
 
+    const removeCharacter = (charId)=>{
+        console.log('remove', charId)
+        //* keep all the ones that dont match the id
+        let newFavorites = favorites.filter(item=> item.id !== charId);
+        console.log("test", newFavorites)
+        setFavorites(newFavorites)
+    }
+
     return(
-        <FavoritesContext.Provider value={{favorites, addCharacter}} >
+        <FavoritesContext.Provider value={{favorites, addCharacter, removeCharacter}} >
             {props.children}
         </FavoritesContext.Provider>
     )
