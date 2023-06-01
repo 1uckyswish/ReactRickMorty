@@ -1,5 +1,4 @@
 import { useState, createContext, useEffect} from "react";
-import { json } from "react-router-dom";
 // create a context
 
 export const ThemeContext = createContext()
